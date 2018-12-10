@@ -6,9 +6,14 @@ import configureStore from './store/configureStore';
 import { login, logout } from './actions/auth';
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
-import 'react-dates/lib/css/_datepicker.css';
 import { firebase } from './firebase/firebase';
 import LoadingPage from './components/LoadingPage';
+import { getFilms } from './actions/films';
+import { getPeople } from './actions/people';
+import { getPlanets } from './actions/planets';
+import { getSpecies } from './actions/species';
+import { getStarships } from './actions/starships';
+import { getVehicles } from './actions/vehicles';
 
 const store = configureStore();
 const jsx = (
@@ -29,6 +34,12 @@ ReactDOM.render(<LoadingPage />, document.getElementById('app'));
 firebase.auth().onAuthStateChanged((user) => {
     if (user) {
         store.dispatch(login(user.uid));
+        store.dispatch(getFilms());
+        store.dispatch(getPeople());
+        store.dispatch(getPlanets());
+        store.dispatch(getSpecies());
+        store.dispatch(getStarships());
+        store.dispatch(getVehicles());
         renderApp();
         if (history.location.pathname === '/') {
             history.push('/dashboard');
