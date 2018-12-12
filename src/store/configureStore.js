@@ -15,13 +15,12 @@ export default () => {
     const store = createStore(
         combineReducers({
             auth: authReducer,
-            people: peopleReducer,
             films: filmsReducer,
+            people: peopleReducer,
+            planets: planetsReducer,
+            species: speciesReducer,
             starships: starshipsReducer,
             vehicles: vehiclesReducer,
-            species: speciesReducer,
-            planets: planetsReducer,
-
         }),
         composeEnhancers(applyMiddleware(thunk))
     );

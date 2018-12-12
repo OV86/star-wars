@@ -1,12 +1,19 @@
 import React from 'react';
 
-const ItemsList = ({ header, children }) => (
-    <div className="content-container">
+const ItemsList = ({ header, children }) => {
+    const headerComp = children.every(element => element === null) ? null : (
         <div className="list-header">{header}</div>
-        <div className="list-body">
-            {children}
+    );
+    return (
+        <div>
+            {headerComp}
+            <div className="list-body">
+                {children}
+            </div>
         </div>
-    </div>
-);
+    );
+};
+
 
 export default ItemsList;
+

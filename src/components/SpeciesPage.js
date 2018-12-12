@@ -9,28 +9,22 @@ export const SpeciesPage = ({ species }) => {
         const {
             id,
             name,
-            classification,
-            average_lifespan,
         } = speciesItem;
 
         return (
-            <div key={id} className="list-item">
+            <Link key={id} className="list-item" to={`/species/${id}`}>
                 <div className="list-item__data">
                     <div>{name}</div>
-                    <div>{classification}</div>
-                    <div>{average_lifespan}</div>
                 </div>
-            </div>
+            </Link>
         );
     });
 
     return (
-        <div className="page-header">
-            <div className="content-container">
-                <ItemsList header="All Star Wars Species" >
-                    {items}
-                </ItemsList>
-            </div>
+        <div className="content-container">
+            <ItemsList header="All Star Wars Species" >
+                {items}
+            </ItemsList>
         </div>
     );
 };

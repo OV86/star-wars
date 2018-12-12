@@ -9,28 +9,22 @@ export const StarshipsPage = ({ starships }) => {
         const {
             id,
             name,
-            cost_in_credits,
-            crew,
         } = starship;
 
         return (
-            <div key={id} className="list-item">
+            <Link key={id} className="list-item" to={`/starships/${id}`}>
                 <div className="list-item__data">
                     <div>{name}</div>
-                    <div>{cost_in_credits}</div>
-                    <div>{crew}</div>
                 </div>
-            </div>
+            </Link>
         );
     });
 
     return (
-        <div className="page-header">
-            <div className="content-container">
-                <ItemsList header="All Star Wars Starships" >
-                    {items}
-                </ItemsList>
-            </div>
+        <div className="content-container">
+            <ItemsList header="All Star Wars Starships" >
+                {items}
+            </ItemsList>
         </div>
     );
 };

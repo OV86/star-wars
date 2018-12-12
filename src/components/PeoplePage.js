@@ -9,26 +9,22 @@ export const PeoplePage = ({ people }) => {
         const {
             id,
             name,
-            gender,
         } = person;
 
         return (
-            <div key={id} className="list-item">
+            <Link key={id} className="list-item" to={`/people/${id}`}>
                 <div className="list-item__data">
                     <div>{name}</div>
-                    <div>{gender}</div>
                 </div>
-            </div>
+            </Link>
         );
     });
 
     return (
-        <div className="page-header">
-            <div className="content-container">
-                <ItemsList header="All Star Wars People" >
-                    {items}
-                </ItemsList>
-            </div>
+        <div className="content-container">
+            <ItemsList header="All Star Wars People" >
+                {items}
+            </ItemsList>
         </div>
     );
 };

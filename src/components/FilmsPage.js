@@ -9,28 +9,22 @@ export const FilmsPage = ({ films }) => {
         const {
             id,
             title,
-            episode_id,
-            release_date,
         } = film;
 
         return (
-            <div key={id} className="list-item">
+            <Link key={id} className="list-item" to={`/films/${id}`}>
                 <div className="list-item__data">
                     <div>{title}</div>
-                    <div>{episode_id}</div>
-                    <div>{release_date}</div>
                 </div>
-            </div>
+            </Link>
         );
     });
 
     return (
-        <div className="page-header">
-            <div className="content-container">
-                <ItemsList header="All Star Wars Films" >
-                    {items}
-                </ItemsList>
-            </div>
+        <div className="content-container">
+            <ItemsList header="All Star Wars Films" >
+                {items}
+            </ItemsList>
         </div>
     );
 };

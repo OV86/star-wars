@@ -1,40 +1,33 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-import ItemsList from './ItemsList';
+import { getById } from '../selectors/films';
 
-export const FilmsPage = ({ films }) => {
+export const FilmDetailsPage = ({ film }) => {
     const {
-        title,
+        director,
         episode_id,
+        opening_crawl,
+        producer,
         release_date,
-    } = films;
-
-    const items = films.map((film) => {
-        return (
-            <div>
-                <div>{title}</div>
-                <div>{episode_id}</div>
-                <div>{release_date}</div>
-            </div>
-        );
-    });
+        title,
+    } = film;
 
     return (
-        <div className="page-header">
-            <div className="content-container">
-                <ItemsList>
-                    {allFilms}
-                </ItemsList>
-            </div>
+        <div className="content-container">
+            <div><span className="details-item">Title:</span> {title}</div>
+            <div><span className="details-item">Episode:</span> {episode_id}</div>
+            <div><span className="details-item">Director:</span> {director}</div>
+            <div><span className="details-item">Producer:</span> {producer}</div>
+            <div><span className="details-item">Description:</span> {opening_crawl}</div>
+            <div><span className="details-item">Release date:</span> {release_date}</div>
         </div>
     );
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, props) => {
     return {
-        films: state.films
+        film: getById(state.films, props.match.params.id)
     };
 };
 
-export default connect(mapStateToProps)(FilmsPage);
+export default connect(mapStateToProps, undefined)(FilmDetailsPage);

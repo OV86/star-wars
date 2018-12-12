@@ -12,6 +12,8 @@
     "parser": "babel-eslint",
     "rules": {
         "comma-dangle": "off",
+        "no-plusplus": "off",
+        "camelcase": "off",
         "no-unused-vars": [
             "error",
             {
